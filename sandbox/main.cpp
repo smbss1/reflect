@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <memory>
 #include "reflect.hpp"
+#include "reflect_json.hpp"
 
 struct Some2 {
     int data = 0;
@@ -33,6 +34,14 @@ namespace reflect
             field("name", &Some::name)
         );
     }
+
+    template <>
+    auto register_type<Some2>()
+    {
+        return members(
+            field("data", &Some2::data)
+        );
+    }
 }
 
 int main()
@@ -45,4 +54,12 @@ int main()
     std::cout << property.get(obj) << std::endl;
     property.set(obj, 45);
     std::cout << property.get(obj) << std::endl;
+    
+    json j;
+    j = obj;
+    std::cout << j << std::endl;
+
+    Some obj2;
+    obj2 = j.get<Some>();
+    std::cout << obj2.data << std::endl;
 }

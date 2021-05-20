@@ -8,3 +8,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
 add_library(reflect STATIC ${CORE_SRCS} )
 target_include_directories(reflect PUBLIC "include")
+
+if (REFLECT_JSON)
+    find_package(foxjson REQUIRED)
+    target_include_directories(reflect PUBLIC "optionnal")
+    target_link_libraries(reflect fox_json)
+endif()
