@@ -1,21 +1,21 @@
-#include "reflect_json.hpp"
+#include "refl_json.hpp"
 
 // namespace fox
 // {
 //     template <typename T>
 //     void serialize(json& j, const T& obj)
 //     {
-//         j = reflect::serialize(obj);
+//         j = refl::serialize(obj);
 //     }
 
 //     template <typename T>
 //     void deserialize(const json& j, T& obj)
 //     {
-//         reflect::deserialize(obj, j);
+//         refl::deserialize(obj, j);
 //     }
 // }
 
-namespace reflect
+namespace refl
 {
 /////////////////// SERIALIZATION
 
@@ -24,7 +24,7 @@ namespace reflect
     json serialize(const Class& obj)
     {
         json value;
-        reflect::foreach_members<Class>(
+        refl::foreach_members<Class>(
             [&obj, &value](auto& member)
             {
                 auto& valueName = value[member.get_name()];
@@ -66,12 +66,12 @@ namespace reflect
     void deserialize(Class& obj, const json& object)
     {
         if (object.is_object()) {
-            reflect::foreach_members<Class>(
+            refl::foreach_members<Class>(
                 [&obj, &object](auto& member)
                 {
                     auto& objName = object[member.get_name()];
                     if (!objName.is_null()) {
-                        using MemberT = reflect::get_member_type<decltype(member)>;
+                        using MemberT = refl::get_member_type<decltype(member)>;
                         if (member.hasSetter()) {
                             member.set(obj, objName.template get<MemberT>());
                         } else if (member.canGetRef()) {

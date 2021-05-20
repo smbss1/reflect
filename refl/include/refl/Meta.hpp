@@ -1,8 +1,8 @@
 /* -----------------------------------------------------------------------------------------------
 
-reflect::register_type<T> is used for class registration and it has the following form when specialized:
+refl::register_type<T> is used for class registration and it has the following form when specialized:
 
-namespace reflect
+namespace refl
 {
     template <>
     auto register_type<YourClass>()
@@ -33,7 +33,7 @@ struct type_list
     static const size_t size = sizeof...(Args);
 };
 
-namespace reflect
+namespace refl
 {
     template <typename Class>
     auto get();

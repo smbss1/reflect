@@ -8,22 +8,22 @@
 #include <unordered_map>
 
 #include "json.hpp"
-#include "reflect.hpp"
+#include "refl.hpp"
 // #include "StringCast.h"
 
 using json = fox::json;
 
-namespace reflect
+namespace refl
 {
 
     /////////////////// SERIALIZATION
 
     template <typename Class,
-        typename = std::enable_if_t <reflect::is_registered<Class>()>>
+        typename = std::enable_if_t <refl::is_registered<Class>()>>
     json serialize(const Class& obj);
 
     template <typename Class,
-        typename = std::enable_if_t <!reflect::is_registered<Class>()>,
+        typename = std::enable_if_t <!refl::is_registered<Class>()>,
         typename = void>
     json serialize(const Class& obj);
 
@@ -45,11 +45,11 @@ namespace reflect
     //Class deserialize(const json& obj);
 
     template <typename Class,
-        typename = std::enable_if_t<reflect::is_registered<Class>()>>
+        typename = std::enable_if_t<refl::is_registered<Class>()>>
     void deserialize(Class& obj, const json& object);
 
     template <typename Class,
-        typename = std::enable_if_t<!reflect::is_registered<Class>()>,
+        typename = std::enable_if_t<!refl::is_registered<Class>()>,
         typename = void>
     void deserialize(Class& obj, const json& object);
 
@@ -62,16 +62,16 @@ namespace fox
     {
         static void serialize(json& j, const T& value)
         {
-            j = reflect::serialize(value);
+            j = refl::serialize(value);
         }
 
         static void deserialize(const json& j, T& value)
         {
-            reflect::deserialize(value, j);
+            refl::deserialize(value, j);
         }
     };
 }
 
-#include "reflect_json.inl"
+#include "refl_json.inl"
 
 #endif

@@ -1,6 +1,6 @@
 #include <stdexcept>
 
-namespace reflect
+namespace refl
 {
 
     template <typename Class, typename T>
@@ -149,4 +149,4 @@ namespace reflect
         return Member<Class, T>(name, nullptr, setterPtr);
     }
 
-} // end of namespace reflect
+} // end of namespace refl

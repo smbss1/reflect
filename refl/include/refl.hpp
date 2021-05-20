@@ -2,7 +2,7 @@
 #ifndef FOX_REFLECT_HPP_
 #define FOX_REFLECT_HPP_
 
-#include "reflect/Member.hpp"
-#include "reflect/Meta.hpp"
+#include "refl/Member.hpp"
+#include "refl/Meta.hpp"
 
 #endif

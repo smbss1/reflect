@@ -9,7 +9,7 @@ T - type of that member
 #ifndef FOX_MEMBER_HPP_
 #define FOX_MEMBER_HPP_
 
-namespace reflect
+namespace refl
 {
     template <typename Class, typename T>
     using member_ptr_t = T Class::*;
@@ -95,7 +95,7 @@ namespace reflect
     template <typename Class, typename T>
     Member<Class, T> field(const char* name, val_getter_func_ptr_t<Class, T> getterPtr, val_setter_func_ptr_t<Class, T> setterPtr);
 
-} // end of namespace reflect
+} // end of namespace refl
 
 #include "Member.inl"
 

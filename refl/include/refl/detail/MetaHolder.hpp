@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------------------------
 
-MetaHolder holds all Member objects constructed via reflect::register_type<T> call.
+MetaHolder holds all Member objects constructed via refl::register_type<T> call.
 If the class is not registered, members is std::tuple<>
 
 -------------------------------------------------------------------------------------------------*/
@@ -10,7 +10,7 @@ If the class is not registered, members is std::tuple<>
 
 #include <tuple>
 
-namespace reflect
+namespace refl
 {
     namespace detail
     {
@@ -53,6 +53,6 @@ namespace reflect
         TupleType MetaHolder<T, TupleType>::members = register_type<T>();
 
     } // end of namespace detail
-} // end of namespace reflect
+} // end of namespace refl
 
 #endif

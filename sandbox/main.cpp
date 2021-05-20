@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <memory>
-#include "reflect.hpp"
+#include "refl.hpp"
 #include "reflect_json.hpp"
 
 struct Some2 {
@@ -23,7 +23,7 @@ struct Some
     }
 };
 
-namespace reflect
+namespace refl
 {
     template <>
     auto register_type<Some>()
@@ -48,7 +48,7 @@ int main()
 {
     Some obj;
 
-    auto type = reflect::get<Some>();
+    auto type = refl::get<Some>();
     auto property = type.get_property<int>("data");
 
     std::cout << property.get(obj) << std::endl;

@@ -6,7 +6,7 @@
 #include "detail/template_helpers.hpp"
 #include "detail/MetaHolder.hpp"
 
-namespace reflect
+namespace refl
 {
     template <typename... Args>
     auto members(Args&&... args)
@@ -95,7 +95,7 @@ namespace reflect
             [&](const auto& member)
             {
                 if (!strcmp(name, member.get_name())) {
-                    using MemberT = reflect::get_member_type<decltype(member)>;
+                    using MemberT = refl::get_member_type<decltype(member)>;
                     assert((std::is_same<MemberT, T>::value) && "Member doesn't have type T");
                     detail::call_if<std::is_same<MemberT, T>::value>(std::forward<F>(f), member);
                 }
@@ -134,4 +134,4 @@ namespace reflect
         );
     }
 
-} // end of namespace reflect
+} // end of namespace refl

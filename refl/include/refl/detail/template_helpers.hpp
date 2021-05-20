@@ -2,7 +2,7 @@
 #ifndef FOX_HELPERS_HPP_
 #define FOX_HELPERS_HPP_
 
-namespace reflect
+namespace refl
 {
     namespace detail
     {

@@ -1,5 +1,5 @@
 
-namespace reflect
+namespace refl
 {
     namespace detail
     {
@@ -49,7 +49,7 @@ namespace reflect
         void for_tuple(F&& f, TupleT&& tuple)
         {
             // ambiguity with std::apply
-            reflect::detail::apply(
+            refl::detail::apply(
                 [&f](auto&&... elems) {
                     for_each_arg(f,
                                 std::forward<decltype(elems)>(elems)...);
@@ -76,4 +76,4 @@ namespace reflect
         { /* do nothing */ }
 
     } // end of namespace detail
-} // end of namespace reflect
+} // end of namespace refl
