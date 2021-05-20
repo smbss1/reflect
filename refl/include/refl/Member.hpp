@@ -9,6 +9,8 @@ T - type of that member
 #ifndef FOX_MEMBER_HPP_
 #define FOX_MEMBER_HPP_
 
+#include <type_traits>
+
 namespace refl
 {
     template <typename Class, typename T>
