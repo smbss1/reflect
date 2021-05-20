@@ -4,8 +4,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 file(GLOB_RECURSE CORE_SRCS "*.cpp")
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
-
 add_library(refl STATIC ${CORE_SRCS} )
 target_include_directories(refl PUBLIC "include")
 

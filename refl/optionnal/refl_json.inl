@@ -1,20 +1,5 @@
 #include "refl_json.hpp"
 
-// namespace fox
-// {
-//     template <typename T>
-//     void serialize(json& j, const T& obj)
-//     {
-//         j = refl::serialize(obj);
-//     }
-
-//     template <typename T>
-//     void deserialize(const json& j, T& obj)
-//     {
-//         refl::deserialize(obj, j);
-//     }
-// }
-
 namespace refl
 {
 /////////////////// SERIALIZATION

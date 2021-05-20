@@ -11,16 +11,26 @@ struct Some2 {
     int data = 0;
 };
 
-struct Some
+class Some
 {
+public:
     int data = 0;
     std::string name;
     Some2 data2;
 
-    void func(int d)
+    std::unordered_map<std::string, int> get_anmis() const
     {
-        std::cout << "d = " << d << std::endl;
+        return m_vAnims;
     }
+
+    void set_anims(std::unordered_map<std::string, int>& anims)
+    {
+
+    }
+    std::unordered_map<std::string, int> m_vAnims;
+
+private:
+
 };
 
 namespace refl
@@ -31,7 +41,8 @@ namespace refl
         return members(
             field("data", &Some::data),
             field("data2", &Some::data2),
-            field("name", &Some::name)
+            field("name", &Some::name),
+            field("anims", &Some::m_vAnims)
         );
     }
 
