@@ -11,7 +11,7 @@
 #include "refl.hpp"
 // #include "StringCast.h"
 
-using json = fox::json;
+using json = fox::json::Value;
 
 namespace refl
 {
@@ -57,19 +57,22 @@ namespace refl
 
 namespace fox
 {
-    template <typename T>
-    struct Serializer
+    namespace json
     {
-        static void serialize(json& j, const T& value)
+        template <typename T>
+        struct Serializer
         {
-            j = refl::serialize(value);
-        }
+            static void serialize(Value& j, const T& value)
+            {
+                j = refl::serialize(value);
+            }
 
-        static void deserialize(const json& j, T& value)
-        {
-            refl::deserialize(value, j);
-        }
-    };
+            static void deserialize(const Value& j, T& value)
+            {
+                refl::deserialize(value, j);
+            }
+        };
+    }
 }
 
 #include "refl_json.inl"
